@@ -81,6 +81,12 @@ the location of this file.
           <font-triplet name="ArialMT" style="normal" weight="bold"/>
         </font>
         -->
+
+	<!-- Add your local font directory here. -->
+	<directory>/usr/local/share/font</directory>
+
+	<!-- System default font directory -->
+	<auto-detect/>
       </fonts>
 
       <!-- This option lets you specify additional options on an XML handler -->
@@ -463,4 +469,3 @@ the location of this file.
   </renderers>
 
 </fop>
-
