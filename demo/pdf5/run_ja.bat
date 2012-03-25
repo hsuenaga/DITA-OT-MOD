@@ -1,0 +1,1 @@
+ant -l out\sample_ja.log -Dargs.input=samples/index-data/sample_ja.ditamap -Dadd.numbering.title.prefix=no -Dadd.thumbnail.index=no -Duse.i18n.index.lib=no -Doutput.pdf=sample_ja_pdf5.pdf -Dtranstype=pdf5

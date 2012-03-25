@@ -1,0 +1,1 @@
+ant -l out\sample_en.log -Dargs.input=samples/index-data/sample_en.ditamap -Doutput.draft.comment=yes -Doutput.required.cleanup=yes -Duse.i18n.index.lib=no -Doutput.pdf=sample_en_pdf5.pdf -Dtranstype=pdf5
