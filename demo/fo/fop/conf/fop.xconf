@@ -83,7 +83,7 @@ the location of this file.
         -->
 
 	<!-- Add your local font directory here. -->
-	<directory>/usr/local/share/font</directory>
+	<directory>/Library/Fonts/Microsoft</directory>
 
 	<!-- System default font directory -->
 	<auto-detect/>
