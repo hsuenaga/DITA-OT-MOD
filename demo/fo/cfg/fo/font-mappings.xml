@@ -59,7 +59,7 @@ See the accompanying license.txt file for applicable licenses.
         <font-face>AdobeSongStd-Light</font-face>
       </physical-font>
       <physical-font char-set="Japanese">
-        <font-face>KozMinProVI-Regular</font-face>
+        <font-face>MS-PGothic</font-face>
       </physical-font>
       <physical-font char-set="Korean">
         <font-face>AdobeMyungjoStd-Medium</font-face>
@@ -85,7 +85,7 @@ See the accompanying license.txt file for applicable licenses.
         <font-face>AdobeSongStd-Light</font-face>
       </physical-font>
       <physical-font char-set="Japanese">
-        <font-face>KozMinProVI-Regular</font-face>
+        <font-face>MS-PMincho</font-face>
       </physical-font>
       <physical-font char-set="Korean">
         <font-face>AdobeMyungjoStd-Medium</font-face>
@@ -111,7 +111,7 @@ See the accompanying license.txt file for applicable licenses.
         <font-face>AdobeSongStd-Light</font-face>
       </physical-font>
       <physical-font char-set="Japanese">
-        <font-face>KozMinProVI-Regular</font-face>
+        <font-face>MS-Gothic</font-face>
       </physical-font>
       <physical-font char-set="Korean">
         <font-face>AdobeMyungjoStd-Medium</font-face>
