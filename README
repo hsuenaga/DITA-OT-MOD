@@ -1,1 +1,23 @@
-There are modified XSL stylesheet  for PDF publishing.
+There are modified XSL stylesheets for PDF publishing.
+  - demo/pdf5 ... AnntenaHouse pdf5 plugin.
+    - see notices directory for lisence term.
+    - support FOP as xsl-fo formatter.
+      - use property pdf.formatter to choose FOP(fop) or XSL Formatter(ah)
+    - added customize for confidential specsheets.
+
+  - demo/fo ... Idiom pdf2 plugin.
+    - come with DITA-OT 1.5.4
+    - added customize for confidential specsheets.
+    - change japanese font to windows standards(MS Mincho/Gothic)
+    - change FOP config to search MS Mincho/Gothic on Mac OS X
+      - you need Microsoft Office for Mac
+
+  - xsl ... DITA-OT style sheets
+    - come with DITA-OT 1.5.4
+    - not modified yet.
+
+You can get original pdf5 plugin and documents from following URL.
+  http://www.antenna.co.jp/XSL-FO/sample/XSLSample.htm#DITA
+
+You can get DITA-OT from following URL.
+  http://dita-ot.sourceforge.net/
