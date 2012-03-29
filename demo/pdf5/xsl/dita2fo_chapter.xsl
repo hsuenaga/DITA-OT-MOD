@@ -65,9 +65,11 @@ E-mail : info@antennahouse.com
         <fo:static-content flow-name="rgnChapterEndRight">
             <xsl:call-template name="chapterEndRight"/>
         </fo:static-content>
-        <fo:static-content flow-name="rgnChapterBlankBody">
-            <xsl:call-template name="makeBlankBlock"/>
-        </fo:static-content>
+        <xsl:if test="$pPdfFormatterAh">
+            <fo:static-content flow-name="rgnChapterBlankBody">
+                <xsl:call-template name="makeBlankBlock"/>
+            </fo:static-content>
+        </xsl:if>
         <fo:flow flow-name="xsl-region-body">
             <xsl:apply-templates select="." mode="PROCESS_TOPICREF"/>
         </fo:flow>
