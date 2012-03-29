@@ -63,6 +63,9 @@ E-mail : info@antennahouse.com
     	<fo:region-body>
             <xsl:copy-of select="ahf:getAttributeSet('atsCoverRegionBody')"/>
         </fo:region-body>
+        <fo:region-before>
+            <xsl:copy-of select="ahf:getAttributeSet('atsCoverRegionBefore')"/>
+        </fo:region-before>
     	<fo:region-after>
             <xsl:copy-of select="ahf:getAttributeSet('atsCoverRegionAfter')"/>
         </fo:region-after>
