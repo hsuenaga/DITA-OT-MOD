@@ -822,8 +822,15 @@ E-mail : info@antennahouse.com
         <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexBlock')"/>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexPaddingInlineContainer1')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
-        <fo:inline-container width="{$offset}"/>
+        <fo:inline-container width="{$offset}">
+            <xsl:if test="$pPdfFormatterFop">
+                <fo:block/>
+            </xsl:if>
+        </fo:inline-container>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexInlineContainer')"/>
             <fo:block-container>
@@ -836,6 +843,9 @@ E-mail : info@antennahouse.com
         </fo:inline-container>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsThumbIndexPaddingInlineContainer2')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <fo:inline-container>
             <fo:block>
