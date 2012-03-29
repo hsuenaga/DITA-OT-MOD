@@ -76,6 +76,14 @@ See the accompanying license.txt file for applicable licenses.
             <xsl:when test="$bkinfoProdname">
                 <xsl:value-of select="$bkinfoProdname"/>
             </xsl:when>
+            <xsl:when test="/*[contains(@class, ' map/map ')]/@title">
+	        <xsl:value-of select="/*[contains(@class, ' map/map ')]/@title"/>
+		<xsl:if test="/*[contains(@class, ' map/map ')]/@rev">
+		  (Rev.
+		  <xsl:value-of select="/*[contains(@class, ' map/map ')]/@rev"/>
+		  )
+		</xsl:if>
+	    </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="insertVariable">
                     <xsl:with-param name="theVariableID" select="'Product Name'"/>
