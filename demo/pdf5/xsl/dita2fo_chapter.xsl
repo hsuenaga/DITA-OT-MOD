@@ -50,10 +50,6 @@ E-mail : info@antennahouse.com
         <xsl:if test="preceding-sibling::*[contains(@class, ' bookmap/chapter ')] or preceding-sibling::*[contains(@class, ' bookmap/part ')]">
             <xsl:attribute name="initial-page-number" select="auto-odd"/>
         </xsl:if>
-        <xsl:if test="$isMap">
-            <xsl:attribute name="initial-page-number" select="auto-odd"/>
-            <xsl:attribute name="force-page-count" select="auto"/>
-        </xsl:if>
         <fo:static-content flow-name="rgnChapterBeforeLeft">
             <xsl:call-template name="chapterBeforeLeft"/>
         </fo:static-content>

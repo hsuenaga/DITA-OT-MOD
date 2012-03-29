@@ -59,16 +59,6 @@ E-mail : info@antennahouse.com
                     <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMeta')"/>
                     <xsl:apply-templates select="$map//*[contains(@class,' bookmap/bookmeta ')]" mode="cover"/>
                 </fo:block>
-                <xsl:if test="$isMap">
-                    <fo:block>
-		        <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMeta')"/>
-		        <xsl:value-of select="(//*/publisher)[1]"/>
-		    </fo:block>
-		    <fo:block>
-		        <xsl:copy-of select="ahf:getAttributeSet('atsCoverBookMeta')"/>
-		        <xsl:value-of select="(//*/author)[1]"/>
-		    </fo:block>
-                </xsl:if>
             </fo:block-container>
         </fo:flow>
     </fo:page-sequence>
