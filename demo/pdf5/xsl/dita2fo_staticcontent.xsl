@@ -47,6 +47,9 @@ E-mail : info@antennahouse.com
         </fo:inline>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <!-- Book title -->
         <xsl:copy-of select="$bookTitle"/>
@@ -59,6 +62,9 @@ E-mail : info@antennahouse.com
         <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <fo:inline>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
@@ -97,6 +103,9 @@ E-mail : info@antennahouse.com
         </fo:inline>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <!-- Book title -->
         <xsl:copy-of select="$bookTitle"/>
@@ -114,6 +123,9 @@ E-mail : info@antennahouse.com
         <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <fo:inline>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
@@ -182,6 +194,9 @@ E-mail : info@antennahouse.com
         </fo:inline>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <!-- Book title -->
         <xsl:copy-of select="$bookTitle"/>
@@ -194,6 +209,9 @@ E-mail : info@antennahouse.com
         <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <fo:inline>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
@@ -241,6 +259,9 @@ E-mail : info@antennahouse.com
         </fo:inline>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <!-- Book title -->
         <xsl:copy-of select="$bookTitle"/>
@@ -253,6 +274,9 @@ E-mail : info@antennahouse.com
         <fo:retrieve-marker retrieve-class-name="{$cTitleBody}"/>
         <fo:inline-container>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter_InlineContainer')"/>
+            <xsl:if test="$pPdfFormatterFop">
+	        <fo:block/>
+            </xsl:if>
         </fo:inline-container>
         <fo:inline>
             <xsl:copy-of select="ahf:getAttributeSet('atsPageNumber')"/>
