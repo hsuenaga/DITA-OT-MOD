@@ -26,6 +26,31 @@
     <property name="apply.toc.attr" value="yes"/>
     <property name="online.pdf" value="yes"/>
     <property name="use.i18n.index.lib" value="no"/>
+
+    <!-- Select formatter (fop or ah) -->
+    <property name="pdf.formatter" value="fop"/>
+    <property name="pdf.formatter.debug" value="yes"/>
+    <property name="xmllint" value="/opt/local/bin/xmllint"/>
+
+    <!-- Check Formatter Specific Extentions -->
+    <condition property="pdf.formatter.ah">
+        <equals arg1="${pdf.formatter}" arg2="ah"/>
+    </condition>
+
+    <condition property="pdf.formatter.fop">
+        <equals arg1="${pdf.formatter}" arg2="fop"/>
+    </condition>
+
+    <condition property="debug.xmllint">
+        <and>
+            <available file="${xmllint}"/>
+            <equals arg1="${pdf.formatter.debug}" arg2="yes"/>
+        </and>
+    </condition>
+
+    <condition property="no.debug.xmllint">
+        <not><isset property="debug.xmllint"/></not>
+    </condition>
     
     <!-- Check AH Formatter Environment -->
     <condition property="has.ahf.option">
@@ -45,11 +70,11 @@
             </not>
         </and>
     </condition>
-    
+
     <condition property="ahf.cmd" value="run.sh">
         <available file="${env.AHF_DIR}/run.sh"/>
     </condition>
-    
+
     <condition property="ahf.cmd" value="AHFCmd.exe">
         <and>
             <not>
@@ -58,7 +83,7 @@
             <available file="${env.AHF_DIR}/AHFCmd.exe"/>
         </and>
     </condition>
-	
+
     <condition property="ahf.cmd" value="XSLCmd.exe">
         <and>
             <not>
@@ -67,7 +92,7 @@
             <available file="${env.AHF_DIR}/XSLCmd.exe"/>
         </and>
     </condition>
-	
+
     <!-- Make absolute path for temporary directory -->
     <available property="build.temp.dir" value="${dita.temp.dir}" file="${dita.temp.dir}" type="dir" />
     <condition property="build.temp.dir" value="${caller.basedir}${file.separator}${dita.temp.dir}">
@@ -84,10 +109,10 @@
 
     <!-- Main target -->
     <target name="merged2pdf">
-    	<echo message="dita.temp.dir=${dita.temp.dir} build.temp.dir=${build.temp.dir}"/>
-    	<echo message="dita.dir=${dita.dir}"/>
-    	<echo message="basedir=${basedir}"/>
-    	<echo message="outputFile=${dita.map.output.dir}${file.separator}${output.pdf}"/>
+        <echo message="dita.temp.dir=${dita.temp.dir} build.temp.dir=${build.temp.dir}"/>
+        <echo message="dita.dir=${dita.dir}"/>
+        <echo message="basedir=${basedir}"/>
+        <echo message="outputFile=${dita.map.output.dir}${file.separator}${output.pdf}"/>
         <antcall target="transform.merged2pdf">
             <param name="inputFile"  value="${build.temp.dir}${file.separator}${merged.file}"/>
             <param name="outputFile" value="${dita.map.output.dir}${file.separator}${output.pdf}"/>
@@ -108,6 +133,16 @@
 
         <antcall target="transform.psmi2fo">
             <param name="inputFile" value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}_psmi.fo"/>
+            <param name="outputFile" value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}_lint.fo"/>
+        </antcall>
+
+        <antcall target="xmllint.fo">
+            <param name="inputFile" value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}_lint.fo"/>
+            <param name="outputFile" value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}.fo"/>
+        </antcall>
+
+        <antcall target="no_xmllint.fo">
+            <param name="inputFile" value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}_lint.fo"/>
             <param name="outputFile" value="${dita.map.output.dir}${file.separator}${dita.map.filename.root}.fo"/>
         </antcall>
 
@@ -134,7 +169,10 @@
     <target name="transform.merged2psmi">
         
         <property name="xsl.file" value="${xsl.dir}${file.separator}dita2fo_shell.xsl"/>
-        
+        <!-- Enable Formatter Specific Extentions: fop or ah -->
+        <property name="pdf.formatter.fop" value="yes"/>
+        <property name="pdf.formatter.ah" value="no"/>
+
         <!-- XSLT Transformation Class Name -->
         <property name="transformer.classname" value="net.sf.saxon.Transform"/>
         
@@ -162,6 +200,8 @@
             <arg line='"PRM_APPLY_TOC_ATTR=${apply.toc.attr}"'/>
             <arg line='"PRM_ONLINE_PDF=${online.pdf}"'/>
             <arg line='"PRM_USE_I18N_INDEX_LIB=${use.i18n.index.lib}"'/>
+            <arg line='"PRM_PDF_FORMATTER_FOP=${pdf.formatter.fop}"'/>
+            <arg line='"PRM_PDF_FORMATTER_AH=${pdf.formatter.ah}"'/>
             <sysproperty key="com.innodata.i18n.home" value="${i18n.home}"/>
             <sysproperty key="use.i18n.index.lib" value="${use.i18n.index.lib}"/>
         </java>
@@ -179,15 +219,38 @@
         
     </target>
 
+    <target name="xmllint.fo" if="debug.xmllint">
+        <echo level="info" message="xmllint enabled: ${outputFile}."/>
+        <exec executable="${xmllint}" logerror="true" failonerror="true">
+          <arg value="--format"/>
+          <arg value="--output"/>
+          <arg value="${outputFile}"/>
+          <arg value="${inputFile}"/>
+        </exec>
+    </target>
+
+    <target name="no_xmllint.fo" if="no.debug.xmllint">
+        <echo level="info" message="xmllint disabled."/>
+        <copy file="${inputFile}" tofile="${outputFile}"/>
+    </target>
+
     <!-- Make PDF from XSL-FO -->
     <target name="transform.fo2pdf">
         <antcall target="transform.fo2pdf.ahf">
             <param name="inputFile" value="${inputFile}"/>
             <param name="outputFile" value="${outputFile}"/>
         </antcall>
+        <antcall target="transform.fo2pdf.fop">
+            <param name="inputFile" value="${inputFile}"/>
+            <param name="outputFile" value="${outputFile}"/>
+        </antcall>
     </target>
     
-    <target name="transform.fo2pdf.ahf" depends="transform.fo2pdf.ahf.check, transform.fo2pdf.ahf.option, transform.fo2pdf.ahf.nooption"/>
+    <target name="transform.fo2pdf.ahf" if="pdf.formatter.ah">
+        <antcall target="transform.fo2pdf.ahf.check"/>
+        <antcall target="transform.fo2pdf.ahf.option"/>
+        <antcall target="transform.fo2pdf.ahf.nooption"/>
+    </target>
     
     <target name="transform.fo2pdf.ahf.check">
         <fail unless="ahf.dir" message="AHF_DIR folder does not exist or AHF_DIR environment variable is missing."/>
@@ -224,5 +287,25 @@
             <arg value="4"/>
         </exec>
     </target>
-    
+
+    <target name="transform.fo2pdf.fop" if="pdf.formatter.fop">
+        <!--Check fop lib-->
+        <taskdef name="fop" classname="org.apache.fop.tools.anttasks.Fop">
+                <classpath>
+                        <fileset dir="${fop.home}/lib">
+                                <include name="*.jar"/>
+                        </fileset>
+                        <fileset dir="${fop.home}/build">
+                                <include name="fop.jar"/>
+                                <include name="fop-hyph.jar"/>
+                        </fileset>
+                </classpath>
+        </taskdef>
+
+        <condition property="outputFile" value="${dita.map.output.dir}/${outputFile.base}${xsl.formatter.ext}">
+                <not><isset property="outputFile"/></not>
+        </condition>
+
+        <fop format="pdf" fofile="${inputFile}" basedir="${pdf2.temp.dir}" outfile="${outputFile}" messagelevel="error" relativebase="true" force="true" userconfig="../fo/fop/conf/fop.xconf"/>
+    </target>
 </project>
