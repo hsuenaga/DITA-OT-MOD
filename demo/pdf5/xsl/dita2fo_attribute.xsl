@@ -82,7 +82,9 @@ E-mail : info@antennahouse.com
                         </xsl:choose>
                         <xsl:if test="$refedTopic">
                             <!-- Add named destination -->
-                            <xsl:attribute name="axf:destination-type" select="'xyz'"/>
+			    <xsl:if test="$pPdfFormatterAh">
+				<xsl:attribute name="axf:destination-type" select="'xyz'"/>
+			    </xsl:if>
                         </xsl:if>
                     </xsl:when>
                     <xsl:otherwise>
