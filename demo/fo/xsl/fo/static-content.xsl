@@ -94,6 +94,13 @@ See the accompanying license.txt file for applicable licenses.
 
         <fo:static-content flow-name="odd-body-header">
             <fo:block xsl:use-attribute-sets="__body__odd__header">
+                <fo:inline xsl:use-attribute-sets="confidential">
+                    <xsl:attribute name="padding-end">10pt</xsl:attribute>
+                    <xsl:call-template name="insertVariable">
+                        <xsl:with-param name="theVariableID" select="'Confidential'"/>
+                    </xsl:call-template>
+                </fo:inline>
+
                 <xsl:call-template name="insertVariable">
                     <xsl:with-param name="theVariableID" select="'Body odd header'"/>
                     <xsl:with-param name="theParameters">
@@ -139,6 +146,12 @@ See the accompanying license.txt file for applicable licenses.
                         </pagenum>
                     </xsl:with-param>
                 </xsl:call-template>
+                <fo:inline xsl:use-attribute-sets="confidential">
+                    <xsl:attribute name="padding-end">10pt</xsl:attribute>
+                    <xsl:call-template name="insertVariable">
+                        <xsl:with-param name="theVariableID" select="'Confidential'"/>
+                    </xsl:call-template>
+                </fo:inline>
             </fo:block>
         </fo:static-content>
 
