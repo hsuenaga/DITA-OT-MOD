@@ -41,7 +41,7 @@ E-mail : info@antennahouse.com
         
         <!-- Make cover -->
         <xsl:call-template name="genCover"/>
-        
+
         <!-- Process main contents -->
         <xsl:choose>
             <xsl:when test="$isBookMap">
@@ -51,6 +51,12 @@ E-mail : info@antennahouse.com
                 <xsl:apply-templates select="$map/*[contains(@class, ' bookmap/backmatter ')]"/>
             </xsl:when>
             <xsl:otherwise>
+                <fo:page-sequence>
+                    <fo:flow>
+	                <!-- Make toc -->
+		        <xsl:call-template name="genToc"/>
+                    </fo:flow>
+                </fo:page-sequence>
                 <xsl:apply-templates select="$map/*[contains(@class, ' map/topicref ')]"/>
             </xsl:otherwise>
         </xsl:choose>
