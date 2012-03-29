@@ -550,6 +550,12 @@ See the accompanying license.txt file for applicable licenses.
     <xsl:attribute-set name="publisher">
     </xsl:attribute-set>
 
+    <xsl:attribute-set name="confidential">
+        <xsl:attribute name="color">red</xsl:attribute>
+        <xsl:attribute name="font-weight">bold</xsl:attribute>
+	<xsl:attribute name="font-family">sans-serif</xsl:attribute>
+    </xsl:attribute-set>
+
     <xsl:attribute-set name="copyright">
     </xsl:attribute-set>
 
