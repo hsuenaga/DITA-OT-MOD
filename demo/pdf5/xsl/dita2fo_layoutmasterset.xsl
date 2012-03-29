@@ -46,15 +46,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before>
             <xsl:copy-of select="ahf:getAttributeSet('atsCommonRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end>
-            <xsl:copy-of select="ahf:getAttributeSet('atsCommonRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after>
             <xsl:copy-of select="ahf:getAttributeSet('atsCommonRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start>
             <xsl:copy-of select="ahf:getAttributeSet('atsCommonRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end>
+            <xsl:copy-of select="ahf:getAttributeSet('atsCommonRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <!-- Cover Page -->
@@ -70,7 +70,12 @@ E-mail : info@antennahouse.com
 
     <fo:simple-page-master master-name="pmsCoverBlank">
         <xsl:copy-of select="ahf:getAttributeSet('atsCommonPage')"/>
-    	<fo:region-body region-name="rgnCoverBlankBody">
+    	<fo:region-body>
+            <xsl:if test="$pPdfFormatterAh">
+                <xsl:attribute name="region-name">
+                    rgnCoverBlankBody
+                </xsl:attribute>
+            </xsl:if>
             <xsl:copy-of select="ahf:getAttributeSet('atsCommonRegionBody')"/>
         </fo:region-body>
     </fo:simple-page-master>
@@ -84,15 +89,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnFrontmatterBeforeLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end>
-            <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnFrontmatterAfterLeft">
              <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start region-name="rgnFrontmatterStartLeft">
              <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end>
+            <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsFrontmatterRight">
@@ -103,20 +108,25 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnFrontmatterBeforeRight">
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end   region-name="rgnFrontmatterEndRight">
-            <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnFrontmatterAfterRight">
              <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start>
              <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end   region-name="rgnFrontmatterEndRight">
+            <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsFrontmatterBlank">
         <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterPage')"/>
-    	<fo:region-body region-name="rgnFrontmatterBlankBody">
+    	<fo:region-body>
+            <xsl:if test="$pPdfFormatterAh">
+                <xsl:attribute name="region-name">
+                    rgnFrontmatterBlankBody
+                </xsl:attribute>
+            </xsl:if>
             <xsl:copy-of select="ahf:getAttributeSet('atsFrontmatterRegionBody')"/>
         </fo:region-body>
     </fo:simple-page-master>
@@ -130,15 +140,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnChapterBeforeLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end>
-            <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnChapterAfterLeft">
              <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start region-name="rgnChapterStartLeft">
              <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end>
+            <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsChapterRight">
@@ -149,20 +159,25 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnChapterBeforeRight">
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end region-name="rgnChapterEndRight">
-            <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnChapterAfterRight">
              <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start>
              <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end region-name="rgnChapterEndRight">
+            <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsChapterBlank">
         <xsl:copy-of select="ahf:getAttributeSet('atsChapterPage')"/>
-    	<fo:region-body region-name="rgnChapterBlankBody">
+    	<fo:region-body>
+            <xsl:if test="$pPdfFormatterAh">
+                <xsl:attribute name="region-name">
+                    rgnChapterBlankBody
+                </xsl:attribute>
+            </xsl:if>
             <xsl:copy-of select="ahf:getAttributeSet('atsChapterRegionBody')"/>
         </fo:region-body>
     </fo:simple-page-master>
@@ -176,15 +191,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnIndexBeforeLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end>
-            <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnIndexAfterLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start region-name="rgnIndexLeftStart">
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end>
+            <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsIndexRight">
@@ -195,15 +210,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnIndexBeforeRight">
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end region-name="rgnIndexEndRight">
-            <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnIndexAfterRight">
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start>
             <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end region-name="rgnIndexEndRight">
+            <xsl:copy-of select="ahf:getAttributeSet('atsIndexRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsIndexBlank">
@@ -222,15 +237,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnBackmatterBeforeLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end>
-            <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnBackmatterAfterLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start region-name="rgnBackmatterStartLeft">
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end>
+            <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsBackmatterRight">
@@ -241,15 +256,15 @@ E-mail : info@antennahouse.com
     	<fo:region-before region-name="rgnBackmatterBeforeRight">
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionBefore')"/>
         </fo:region-before>
-    	<fo:region-end  region-name="rgnBackmatterEndRight">
-            <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionEnd')"/>
-        </fo:region-end>
     	<fo:region-after region-name="rgnBackmatterAfterRight">
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionAfter')"/>
         </fo:region-after>
     	<fo:region-start>
             <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionStart')"/>
         </fo:region-start>
+    	<fo:region-end  region-name="rgnBackmatterEndRight">
+            <xsl:copy-of select="ahf:getAttributeSet('atsBackmatterRegionEnd')"/>
+        </fo:region-end>
     </fo:simple-page-master>
 
     <fo:simple-page-master master-name="pmsBackmatterBlank">
