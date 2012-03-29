@@ -19,5 +19,6 @@ E-mail : info@antennahouse.com
 >
 <!-- Add your customization xsl here. -->
 <!-- xsl:include href="dita2fo_custom_layout.xsl"/-->
+<xsl:include href="dita2fo_specsheet.xsl"/>
 
 </xsl:stylesheet>
