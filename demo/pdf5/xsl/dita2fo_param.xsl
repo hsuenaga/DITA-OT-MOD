@@ -96,5 +96,11 @@ E-mail : info@antennahouse.com
 <xsl:param name="PRM_ONLINE_PDF" select="$cYes"/>
 <xsl:variable name="pOnlinePdf" select="boolean($PRM_ONLINE_PDF=$cYes)" as="xs:boolean"/>
 
+<!-- Formatter selection -->
+<xsl:param name="PRM_PDF_FORMATTER_FOP" select="$cYes"/>
+<xsl:variable name="pPdfFormatterFop" select="boolean($PRM_PDF_FORMATTER_FOP=$cYes)" as="xs:boolean"/>
+
+<xsl:param name="PRM_PDF_FORMATTER_AH" select="$cYes"/>
+<xsl:variable name="pPdfFormatterAh" select="boolean($PRM_PDF_FORMATTER_AH=$cYes)" as="xs:boolean"/>
 
 </xsl:stylesheet>
