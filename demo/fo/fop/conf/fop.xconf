@@ -83,7 +83,7 @@ the location of this file.
         -->
 
 	<!-- Add your local font directory here. -->
-	<directory>/Library/Fonts/Microsoft</directory>
+	<auto-detect>/Library/Fonts/Microsoft</auto-detect>
 
 	<!-- System default font directory -->
 	<auto-detect/>
