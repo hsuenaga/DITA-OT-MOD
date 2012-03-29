@@ -400,4 +400,8 @@ See the accompanying license.txt file for applicable licenses.
     <variable id="Glossary">用語集</variable>
     <variable id="List of Tables">表の一覧</variable>
     <variable id="List of Figures">図の一覧</variable>
+
+    <!-- Confidentiality notices -->
+    <variable id="Confidential">機密</variable>
+
 </vars>

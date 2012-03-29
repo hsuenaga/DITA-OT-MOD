@@ -415,4 +415,7 @@ See the accompanying license.txt file for applicable licenses.
      
      <!-- The heading string to put at the top of the List of Figures -->
      <variable id="List of Figures">List of Figures</variable>
+
+     <!-- Confidentiality notices -->
+     <variable id="Confidential">CONFIDENTIAL</variable>
 </vars>
