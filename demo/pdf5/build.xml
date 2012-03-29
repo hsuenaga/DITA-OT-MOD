@@ -33,11 +33,11 @@
     <property name="xmllint" value="/opt/local/bin/xmllint"/>
 
     <!-- Check Formatter Specific Extentions -->
-    <condition property="pdf.formatter.ah">
+    <condition property="pdf.formatter.ah" value="yes">
         <equals arg1="${pdf.formatter}" arg2="ah"/>
     </condition>
 
-    <condition property="pdf.formatter.fop">
+    <condition property="pdf.formatter.fop" value="yes">
         <equals arg1="${pdf.formatter}" arg2="fop"/>
     </condition>
 
