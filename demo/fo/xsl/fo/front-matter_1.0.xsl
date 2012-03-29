@@ -93,6 +93,13 @@ See the accompanying license.txt file for applicable licenses.
             <xsl:call-template name="insertFrontMatterStaticContents"/>
             <fo:flow flow-name="xsl-region-body">
                 <fo:block xsl:use-attribute-sets="__frontmatter">
+		    <fo:block xsl:use-attribute-sets="confidential">
+                        <xsl:attribute name="font-size">large</xsl:attribute>
+			<xsl:attribute name="text-align">left</xsl:attribute>
+		        <xsl:call-template name="insertVariable">
+			    <xsl:with-param name="theVariableID" select="'Confidential'"/>
+			</xsl:call-template>
+		    </fo:block>
                     <!-- set the title -->
                     <fo:block xsl:use-attribute-sets="__frontmatter__title">
                         <xsl:choose>
@@ -104,6 +111,10 @@ See the accompanying license.txt file for applicable licenses.
                             </xsl:when>
                             <xsl:when test="//*[contains(@class, ' map/map ')]/@title">
                                 <xsl:value-of select="//*[contains(@class, ' map/map ')]/@title"/>
+				<xsl:if test="//*[contains(@class, ' map/map ')]/@rev">
+				  Rev. 
+                                  <xsl:value-of select="//*[contains(@class, ' map/map ')]/@rev"/>
+				</xsl:if>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="/descendant::*[contains(@class, ' topic/topic ')][1]/*[contains(@class, ' topic/title ')]"/>
@@ -117,6 +128,15 @@ See the accompanying license.txt file for applicable licenses.
                     <fo:block xsl:use-attribute-sets="__frontmatter__owner">
                         <xsl:apply-templates select="$map//*[contains(@class,' bookmap/bookmeta ')]"/>
                     </fo:block>
+
+		    <xsl:if test="$mapType != 'bookmap'">
+                      <fo:block xsl:use-attribute-sets="__frontmatter__owner">
+			<xsl:value-of select="(//*/publisher)[1]"/>
+		      </fo:block>
+                      <fo:block xsl:use-attribute-sets="__frontmatter__owner">
+			<xsl:value-of select="(//*/author)[1]"/>
+		      </fo:block>
+		    </xsl:if>
 
                 </fo:block>
 
