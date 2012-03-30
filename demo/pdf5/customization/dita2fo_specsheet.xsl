@@ -141,6 +141,9 @@
                 <xsl:attribute name="margin-right">31.7mm</xsl:attribute>
                 <fo:block>
                     <fo:inline font-size="large" color="red">
+			<xsl:attribute name="border-bottom">
+			    2pt solid red
+			</xsl:attribute>
                         機密
                     </fo:inline>
                 </fo:block>
